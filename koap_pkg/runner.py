@@ -17,6 +17,7 @@ from koap_pkg.menu import (
 from koap_pkg.stage1_koap_pipeline import run_koap_pipeline
 from koap_pkg.stage2_testsym import run_testsym
 from koap_pkg.stage3_opd import run_opd
+from koap_pkg.stage4_all_mtu import run_all_mtu
 
 
 def stage1(folder: str, region: str) -> None:
@@ -57,7 +58,15 @@ def stage3(folder: str, region: str) -> None:
         print(f"  ✖ Ошибка этапа 3: {e}")
 
 
-STAGES = {'1': stage1, '2': stage2, '3': stage3}
+def stage4(folder: str, region: str) -> None:
+    # Этап 4 не зависит от выбранного МТУ — считает сводку по всем 8 спискам
+    try:
+        run_all_mtu(folder)
+    except Exception as e:
+        print(f"  ✖ Ошибка этапа 4: {e}")
+
+
+STAGES = {'1': stage1, '2': stage2, '3': stage3, '4': stage4}
 
 
 def run() -> None:

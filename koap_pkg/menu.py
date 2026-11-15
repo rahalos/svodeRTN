@@ -74,11 +74,12 @@ def menu_choose_stages() -> set[str]:
     print("  1 — КоАП пайплайн (4 надзора + ГАДН → таблица результатов)")
     print("  2 — Суммирование статей (testsym)")
     print("  3 — ОПД (ГАДН → шаблон ОПД)")
+    print("  4 — Сводный подсчёт по всем МТУ (закладка «Номера статей»)")
     print("  0 — Все этапы подряд")
     raw = input("  Выбор: ").strip()
     if raw == '0':
-        return {'1', '2', '3'}
-    return {s.strip() for s in raw.split(',') if s.strip() in ('1', '2', '3')}
+        return {'1', '2', '3', '4'}
+    return {s.strip() for s in raw.split(',') if s.strip() in ('1', '2', '3', '4')}
 
 
 def menu_next_action() -> str:
