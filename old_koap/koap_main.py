@@ -531,12 +531,12 @@ def run_sum_mtus(folder: str, mtus: list, output_file: str) -> None:
     ws_out.title = "Сумма МТУ"
 
     # Заголовок
-    ws_out.append(["Статья"] + [f"Столбец {i+1}" for i in range(41)])
+    ws_out.append(["Статья"] + [f"Столбец {i+1}" for i in range(ROW_WIDTH)])
 
     # Данные (в порядке SORT_ST)
     for article in SORT_ST:
         if article in filtered_sum:
-            vals = (filtered_sum[article] + [0.0] * 41)[:41]
+            vals = (filtered_sum[article] + [0.0] * ROW_WIDTH)[:ROW_WIDTH]
             ws_out.append([article] + vals)
 
     # Отдельный лист — разбивка по МТУ (для контроля)
